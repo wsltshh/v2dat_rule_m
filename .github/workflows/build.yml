@@ -23,7 +23,7 @@ jobs:
           
       - name: Get geosite.dat files
         run: |
-          wget https://github.com/Loyalsoldier/domain-list-custom/releases/latest/download/geosite.dat
+          wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat
 
       - name: Convert rule dat files
         run: |
