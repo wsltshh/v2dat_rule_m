@@ -29,12 +29,11 @@ jobs:
         run: |
           mkdir -p rule
           v2dat unpack geoip -o ./rule -f cn ./geoip.dat
-          v2dat unpack geoip -o ./rule -f gfw ./geoip.dat
           v2dat unpack geosite -o ./rule -f cn ./geosite.dat
           v2dat unpack geosite -o ./rule -f category-ads-all ./geosite.dat
           v2dat unpack geosite -o ./rule -f gfw ./geosite.dat
           v2dat unpack geosite -o ./rule -f geolocation-!cn ./geosite.dat
-          mv ./rule/geosite_geolocation-!cn.txt ./rule/geosite_geolocation-ncn-cn.txt
+          mv ./rule/geosite_geolocation-!cn.txt ./rule/geosite_geolocation-ncn.txt
 
       - name: Delete old releases
         uses: Nats-ji/delete-old-releases@v1
