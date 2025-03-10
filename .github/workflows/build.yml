@@ -19,7 +19,7 @@ jobs:
           
       - name: Get geoip.dat files
         run: |
-          wget -O geoip.dat https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip-only-cn-private.dat
+          wget -O geoip.dat https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat
           
       - name: Get geosite.dat files
         run: |
@@ -29,6 +29,7 @@ jobs:
         run: |
           mkdir -p rule
           v2dat unpack geoip -o ./rule -f cn ./geoip.dat
+          v2dat unpack geoip -o ./rule -f gfw ./geoip.dat
           v2dat unpack geosite -o ./rule -f cn ./geosite.dat
           v2dat unpack geosite -o ./rule -f category-ads-all ./geosite.dat
           v2dat unpack geosite -o ./rule -f gfw ./geosite.dat
