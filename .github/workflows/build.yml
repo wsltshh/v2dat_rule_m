@@ -16,16 +16,24 @@ jobs:
       - name: Install v2dat
         run: |
           go install github.com/urlesistiana/v2dat@latest
-
+          
+      - name: Get geoip.dat files
+        run: |
+          wget https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat
+          
       - name: Get geosite.dat files
         run: |
           wget https://github.com/Loyalsoldier/domain-list-custom/raw/release/geosite.dat
 
-      - name: Convert geosite.dat files
+      - name: Convert rule dat files
         run: |
           mkdir -p rule
+          v2dat unpack geosite -o ./rule -f cn ./geoip.dat
+          v2dat unpack geosite -o ./rule -f gfw ./geoip.dat
           v2dat unpack geosite -o ./rule -f cn ./geosite.dat
           v2dat unpack geosite -o ./rule -f category-ads-all ./geosite.dat
+          v2dat unpack geosite -o ./rule -f gfw ./geosite.dat
+          v2dat unpack geosite -o ./rule -f cdn ./geosite.dat
           v2dat unpack geosite -o ./rule -f geolocation-!cn ./geosite.dat
           mv ./rule/geosite_geolocation-!cn.txt ./rule/geosite_geolocation-non-cn.txt
 
