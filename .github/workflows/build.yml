@@ -33,7 +33,7 @@ jobs:
           v2dat unpack geosite -o ./rule -f category-ads-all ./geosite.dat
           v2dat unpack geosite -o ./rule -f gfw ./geosite.dat
           v2dat unpack geosite -o ./rule -f geolocation-!cn ./geosite.dat
-          mv ./rule/geosite_geolocation-!cn.txt ./rule/geosite_geolocation-non-ncn.txt
+          mv ./rule/geosite_geolocation-!cn.txt ./rule/geosite_geolocation-non-cn.txt
 
       - name: Delete old releases
         uses: Nats-ji/delete-old-releases@v1
