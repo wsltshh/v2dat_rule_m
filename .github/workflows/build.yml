@@ -19,7 +19,7 @@ jobs:
           
       - name: Get geoip.dat files
         run: |
-          wget https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip-only-cn-private.dat
+          wget -O geoip.dat https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip-only-cn-private.dat
           
       - name: Get geosite.dat files
         run: |
@@ -28,12 +28,12 @@ jobs:
       - name: Convert rule dat files
         run: |
           mkdir -p rule
-          v2dat unpack geosite -o ./rule -f cn ./geoip-only-cn-private.dat
+          v2dat unpack geosite -o ./rule -f cn ./geoip.dat
           v2dat unpack geosite -o ./rule -f cn ./geosite.dat
           v2dat unpack geosite -o ./rule -f category-ads-all ./geosite.dat
           v2dat unpack geosite -o ./rule -f gfw ./geosite.dat
           v2dat unpack geosite -o ./rule -f geolocation-!cn ./geosite.dat
-          mv ./rule/geosite_geolocation-!cn.txt ./rule/geosite_geolocation-non-cn.txt
+          mv ./rule/geosite_geolocation-!cn.txt ./rule/geosite_geolocation-non-ncn.txt
 
       - name: Delete old releases
         uses: Nats-ji/delete-old-releases@v1
