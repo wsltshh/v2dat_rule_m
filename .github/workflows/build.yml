@@ -19,11 +19,11 @@ jobs:
           
       - name: Get geoip.dat files
         run: |
-          wget -O geoip.dat https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat
+          wget -O geoip.dat https://raw.githubusercontent.com/Loyalsoldier/geoip/release/cn.dat
           
       - name: Get geosite.dat files
         run: |
-          wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat
+          wget https://github.com/Loyalsoldier/domain-list-custom/releases/latest/download/geosite.dat
 
       - name: Convert rule dat files
         run: |
