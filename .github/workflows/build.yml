@@ -43,6 +43,14 @@ jobs:
           keep-old-minor-releases: false
           remove-tags: true
 
+      - name: Delete old workflow runs
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          retain_days: 7
+          keep_minimum_runs: 0
+
       - name: Set variables
         env:
           TZ: Asia/Shanghai
